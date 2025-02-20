@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Modification depuis main
-=======
-Modification depuis conflit-merge
->>>>>>> conflit-merge
+echo "Ligne initiale du fichier" > merge.txt
