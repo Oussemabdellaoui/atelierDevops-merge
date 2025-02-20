@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/oussamakaddech/atelierdevops.git'
+                git branch: 'main', url: 'https://github.com/Oussemabdellaoui/atelierDevops-merge.git'
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Exécution de l'analyse SonarQube
-                    sh 'mvn sonar:sonar -Dsonar.login=squ_39e050c1fd93a0d0e121b81e3dc58963dde2c86f -Dmaven.test.skip=true'
+                    sh 'mvn sonar:sonar -Dsonar.login=squ_5fc192b439b17e0582cf089c0dd705e2b8537882 -Dmaven.test.skip=true'
                 }
             }
         }
