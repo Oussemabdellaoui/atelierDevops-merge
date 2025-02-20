@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Oussemabdellaoui/atelierDevops-merge.git'
+                git branch: 'main', url: ''https://github.com/oussamakaddech/atelierdevops.git''
             }
         }
 
