@@ -15,7 +15,7 @@ pipeline {
 
                git branch: 'main',
 
-               url: ' https://github.com/oussamakaddech/atelierdevops.git'
+               url: ' https://github.com/Oussemabdellaoui/atelierdevops.git'
 
           }
 
@@ -23,13 +23,18 @@ pipeline {
 
  stage ('Compile Stage') {
 
- steps {
+     steps {
 
- sh 'mvn clean compile'
+              sh 'mvn clean compile'
+
+          }
 
  }
-
- }
+        stage('SonarQube Analysis') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar8922.1! -Dmaven.test.skip=true';
+            }
+        }
 
  }
 
