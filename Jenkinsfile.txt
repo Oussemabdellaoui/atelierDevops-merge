@@ -1,41 +1,32 @@
 pipeline {
+    agent any
 
- agent any
-
- tools { 
-        jdk 'JAVA_HOME' 
-        maven 'M2_HOME' 
+    environment {
+        M2_HOME = '/usr/share/maven'
+        PATH = "${M2_HOME}/bin:${PATH}"
     }
 
- stages {
-
- stage('GIT') {
-
-           steps {
-
-               git branch: 'main',
-
-               url: ' https://github.com/Oussemabdellaoui/atelierdevops.git'
-
-          }
-
-     }
-
- stage ('Compile Stage') {
-
-     steps {
-
-              sh 'mvn clean compile'
-
-          }
-
- }
-        stage('SonarQube Analysis') {
+    stages {
+        stage('Checkout') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar8922.1! -Dmaven.test.skip=true';
+                git branch: 'main', url: 'https://github.com/oussamakaddech/atelierdevops.git'
             }
         }
 
- }
+        stage('Build') {
+            steps {
+                sh 'ls -la'  // Vérifier que le projet est bien cloné
+                sh 'mvn clean compile'
+            }
+        }
 
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Exécution de l'analyse SonarQube
+                    sh 'mvn sonar:sonar -Dsonar.login=squ_39e050c1fd93a0d0e121b81e3dc58963dde2c86f -Dmaven.test.skip=true'
+                }
+            }
+        }
+    }
 }
