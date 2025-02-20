@@ -1,1 +1,1 @@
-echo "Ligne initiale du fichier" > merge.txt
+Changement sur la branche conflit
