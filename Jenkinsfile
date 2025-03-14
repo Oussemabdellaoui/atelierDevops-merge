@@ -27,6 +27,7 @@ pipeline {
 stage('Deploy to Nexus') {
     steps {
         script {
+            sh 'mvn clean install'
             sh 'mvn deploy -DskipTests'
         }
     }
