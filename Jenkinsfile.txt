@@ -19,6 +19,15 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Exécution de l'analyse SonarQube
+                    sh 'mvn sonar:sonar -Dsonar.login=squ_5fc192b439b17e0582cf089c0dd705e2b8537882 -Dmaven.test.skip=true'
+                }
+            }
+        }
         stage('Deploy to Nexus') {
             steps {
                 script {
