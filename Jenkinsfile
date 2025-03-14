@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                   sh """
-  mvn deploy -DaltDeploymentRepository=nexus::default::http://192.167.33.10:8081/repository/maven-releases/
+mvn deploy -X -DaltDeploymentRepository=nexus::default::http://192.167.33.10:8081/repository/maven-releases/
 """
                 }
             }
