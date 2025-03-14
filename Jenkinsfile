@@ -24,13 +24,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Nexus') {
+       stage('Deploy to Nexus') {
             steps {
-                // Use withCredentials to inject Nexus username and password
-                withCredentials([usernamePassword(credentialsId: 'nexus-credentials', 
-                                                 usernameVariable: 'admin', 
-                                                 passwordVariable: 'Ouss8922.1!')]) {
-                    sh 'mvn deploy -DskipTests=true -Dusername=$admin -Dpassword=$Ouss8922.1!'
+                script {
+                    sh """
+                    mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.167.33.10:8083/repository/maven-releases/
+                    """
                 }
             }
         }
