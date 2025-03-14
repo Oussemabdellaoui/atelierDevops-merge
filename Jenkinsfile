@@ -9,9 +9,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'git --version'
-                sh 'git ls-remote https://github.com/Oussemabdellaoui/atelierDevops-merge'
-                git branch: 'main', url: 'https://github.com/Oussemabdellaoui/atelierDevops-merge'
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/Oussemabdellaoui/atelierDevops-merge']]
+                ])
             }
         }
 
