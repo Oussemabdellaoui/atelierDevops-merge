@@ -26,7 +26,7 @@ pipeline {
 
         stage('Deploy to Nexus') {
             steps {
-                sh 'mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.167.33.10:8083/repository/maven-releases/'
+                sh 'mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.167.33.10:8081/repository/maven-releases/'
             }
         }
     }
