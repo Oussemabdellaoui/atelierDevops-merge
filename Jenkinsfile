@@ -26,7 +26,12 @@ pipeline {
 
         stage('Deploy to Nexus') {
             steps {
-                sh 'mvn deploy'
+                // Use withCredentials to inject Nexus username and password
+                withCredentials([usernamePassword(credentialsId: 'nexus-credentials', 
+                                                 usernameVariable: 'admin', 
+                                                 passwordVariable: 'Ouss8922.1!')]) {
+                    sh 'mvn deploy -DskipTests=true -Dusername=$admin -Dpassword=$Ouss8922.1!'
+                }
             }
         }
     }
